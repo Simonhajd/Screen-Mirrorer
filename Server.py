@@ -11,20 +11,23 @@ while True:
     from_client = b''  # Changed from string to bytes
     
     while True:
-        
-   
-        #print("Send character to CLIENT ")
-        #input1 = input()  # Changed from raw_input() to input()
-        #conn.send(input1.encode())  # Encode string to bytes before sending
-
-        #print("You received from client the next Character")
         from_client = b''  # Changed from string to bytes
         data = conn.recv(4096)
         if not data:
             break
         from_client += data
-        print(from_client.decode())  # Decode bytes to string before printing
-        pyautogui.write(from_client.decode())
+        decoded_data = from_client.decode()
+        print(decoded_data)  # Decode bytes to string before printing
+        
+            
+
+        if decoded_data.startswith('p'):
+            print('pressing:', decoded_data[1:])
+            pyautogui.keyDown(decoded_data[1:])  # press the keys after the first character
+        elif decoded_data.startswith('r'):
+            print('pressing:', decoded_data[1:])
+            pyautogui.keyUp(decoded_data[1:])  # release the keys after the first character
+
         print('\n')
 
     conn.close()
