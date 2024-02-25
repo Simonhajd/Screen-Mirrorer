@@ -2,7 +2,7 @@ import socket
 import pyautogui
 serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-serv.bind(('localhost', 12390))
+serv.bind(('localhost', 12397))
 serv.listen(5)
 
 while True:
@@ -25,7 +25,7 @@ while True:
             print('pressing:', decoded_data[1:])
             pyautogui.keyDown(decoded_data[1:])  # press the keys after the first character
         elif decoded_data.startswith('r'):
-            print('pressing:', decoded_data[1:])
+            print('releasing:', decoded_data[1:])
             pyautogui.keyUp(decoded_data[1:])  # release the keys after the first character
 
         print('\n')
