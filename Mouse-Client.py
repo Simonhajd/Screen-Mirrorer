@@ -9,7 +9,7 @@ delay = 1  # delay in seconds
 def on_move(x, y):
     global last_sent
     if time.time() - last_sent > delay:
-        data = f"{math.floor(x)},{math.floor(y)}"
+        data = f"{math.floor(x)},{math.floor(y)}\n"
         print(data)
         client.send(data.encode('utf-8'))
         last_sent = time.time()

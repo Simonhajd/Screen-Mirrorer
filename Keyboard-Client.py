@@ -3,7 +3,7 @@ from pynput.keyboard import Key, Listener
 import time
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('localhost', 12397))
+client.connect(('localhost', 12390))
 start = 0
 keys_pressed = {}
 
